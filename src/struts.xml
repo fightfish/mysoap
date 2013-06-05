@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+    <package name="default" namespace="/work" extends="struts-default">
+        
+        <action name="hello">
+            <result>
+            	welcome.jsp
+            </result>
+        </action>
+        
+        <!-- 登陆验证 -->
+		<action name="loginidentify" class="action.LoginidentifyAction">
+			<result name="success">index.jsp</result>
+			<result name="failure">welcome.jsp</result>
+		</action>
+        
+        <!-- 注册信息 -->
+		<action name="register" class="action.RegisterAction">
+			<result name="success">showregister.jsp</result>
+		</action>
+    </package>
+
+    <!-- Add packages here -->
+
+</struts>

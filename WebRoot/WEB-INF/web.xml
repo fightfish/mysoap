@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app>
+  <display-name>Apache-SOAP</display-name>
+    <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <description>no description</description>
+  <servlet>
+    <servlet-name>rpcrouter</servlet-name>
+    <display-name>Apache-SOAP RPC Router</display-name>
+    <description>no description</description>
+    <servlet-class>org.apache.soap.server.http.RPCRouterServlet</servlet-class>
+    <init-param>
+      <param-name>faultListener</param-name>
+      <param-value>org.apache.soap.server.DOMFaultListener</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet>
+    <servlet-name>messagerouter</servlet-name>
+    <display-name>Apache-SOAP Message Router</display-name>
+    <servlet-class>org.apache.soap.server.http.MessageRouterServlet</servlet-class>
+    <init-param>
+      <param-name>faultListener</param-name>
+      <param-value>org.apache.soap.server.DOMFaultListener</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>rpcrouter</servlet-name>
+    <url-pattern>/servlet/rpcrouter</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>messagerouter</servlet-name>
+    <url-pattern>/servlet/messagerouter</url-pattern>
+  </servlet-mapping>
+  
+  <listener>   
+	<listener-class>timejob.MyTimerTask</listener-class>   
+  </listener>
+  
+</web-app>
